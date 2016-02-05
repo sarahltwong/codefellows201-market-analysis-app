@@ -1,0 +1,46 @@
+h1 {
+  font-family: "Open Sans",sans-serif;
+  font-weight: 600;
+  font-size: 150%;
+}
+
+h2 {
+  font-family: "Open Sans",sans-serif;
+  font-weight: 400;
+  font-size: 100%;
+}
+
+p {
+  font-family: "Open Sans",sans-serif;
+  font-weight: 300;
+  font-size: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-flow: row wrap;
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.image {
+  height: 250px;
+  width: auto;
+}
+
+#sectionOne {
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
+}
+
+#sectionOne, #sectionTwo, #sectionThree {
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
+  flex-grow: 1;
+  padding: 10px;
+}
