@@ -1,7 +1,7 @@
 var images = [];
 var votes = 0;
 var imageName = ["Bag","Banana","Boots","Chair","Ctulhu","Dragon","Pen","Scissors","Shark","Baby Broom","Unicorn","USB","Watering Can","Wine Glass"];
-var imageSource = ["imgs/bag.jpg","imgs/banana.jpg","imgs/boots.jpg","imgs/chair.jpg","imgs/cthulhu.jpg","imgs/dragon.jpg","imgs/pen.jpg","imgs/scissors.jpg","imgs/shark.jpg","imgs/sweep.jpg","imgs/unicorn.jpg","imgs/usb.jpg","imgs/water_can.jpg","imgs/wine_glass.jpg"];
+var imageSource = ["imgs/img2/bag.jpg","imgs/img2/banana.jpg","imgs/img2/boots.jpg","imgs/img2/chair.jpg","imgs/img2/cthulhu.jpg","imgs/img2/dragon.jpg","imgs/img2/pen.jpg","imgs/img2/scissors.jpg","imgs/img2/shark.jpg","imgs/img2/sweep.jpg","imgs/img2/unicorn.jpg","imgs/img2/usb.jpg","imgs/img2/water_can.jpg","imgs/img2/wine_glass.jpg"];
 
 function Image (imageName, imageSource) {
   this.imageName = imageName;
