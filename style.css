@@ -10,34 +10,22 @@ h2 {
   font-size: 100%;
 }
 
-p {
-  font-family: "Open Sans",sans-serif;
-  font-weight: 300;
-  font-size: 100%;
-}
-
 .container {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  flex-flow: row wrap;
+  flex-flow: row;
   border-color: black;
   border-width: 1px;
   border-style: solid;
 }
 
-.image {
+img {
   height: 250px;
   width: auto;
 }
 
-#sectionOne {
-  border-color: black;
-  border-width: 1px;
-  border-style: solid;
-}
-
-#sectionOne, #sectionTwo, #sectionThree {
+section {
   border-color: black;
   border-width: 1px;
   border-style: solid;
