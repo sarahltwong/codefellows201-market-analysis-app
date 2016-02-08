@@ -76,3 +76,8 @@ button {
 #playAgain, #showResults {
   padding: 0;
 }
+
+#charts, canvas {
+  width: 100%;
+  height: auto;
+}

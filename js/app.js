@@ -29,6 +29,7 @@ function shuffle (array) {
 
 document.getElementById("submit").style.display = "none";
 document.getElementById("replay").style.display = "none";
+document.getElementById("charts").style.display = "none";
 document.getElementById("mainBox").addEventListener("click",displayImage,false);
 
 function displayImage () {
@@ -43,7 +44,7 @@ function displayImage () {
   shuffle (images);
   for (var i = 0; i < 3; i++) {
     var sectionEl = document.createElement("section");
-  
+
     var headerEl = document.createElement("h2");
     var headerContent = document.createTextNode(images[i].imageName);
     headerEl.appendChild(headerContent);
@@ -67,12 +68,51 @@ function displayImage () {
 document.getElementById("showResults").addEventListener("click",displayResults,false);
 document.getElementById("playAgain").addEventListener("click",reload,false);
 
+function reload () {
+  window.location.reload();
+}
+
+var data = {
+    labels: [],
+    datasets: [
+        {
+            label: "Appearances",
+            fillColor: "rgba(220,220,220,0.5)",
+            strokeColor: "rgba(220,220,220,0.8)",
+            highlightFill: "rgba(220,220,220,0.75)",
+            highlightStroke: "rgba(220,220,220,1)",
+            data: []
+        },
+        {
+            label: "Votes",
+            fillColor: "rgba(151,187,205,0.5)",
+            strokeColor: "rgba(151,187,205,0.8)",
+            highlightFill: "rgba(151,187,205,0.75)",
+            highlightStroke: "rgba(151,187,205,1)",
+            data: []
+        }
+    ]
+};
+
+
 function displayResults () {
+  images.sort(function(a,b){return b.counter-a.counter});
+  for (var i = 0; i < images.length; i++) {
+    data.labels.push(images[i].imageName);
+    data.datasets[0].data.push(images[i].appearance);
+    data.datasets[1].data.push(images[i].counter);
+  };
+
+  var ctx = document.getElementById("chartOne").getContext("2d");
+  var myNewChart = new Chart(ctx).Bar(data);
+
   document.getElementById("submit").style.display = "none";
   images.sort(function(a,b){return b.counter-a.counter});
+  document.getElementById("charts").style.display = "block";
+
   var tableEl = document.createElement("table");
   var tableBody = document.createElement("tbody");
-  var tableHeaders = ["Product","Votes"];
+  var tableHeaders = ["Product","Votes","Appearances"];
   var row = document.createElement("tr");
   for (var i = 0; i < tableHeaders.length; i++) {
     var theadEl = document.createElement("th");
@@ -83,8 +123,8 @@ function displayResults () {
   };
   for (var k = 0; k < imageName.length; k++) {
     var row2 = document.createElement("tr");
-    for (var j = 0; j < 2; j++) {
-      var rowContent = [images[k].imageName,images[k].counter];
+    for (var j = 0; j < 3; j++) {
+      var rowContent = [images[k].imageName,images[k].counter,images[k].appearance];
       var cell = document.createElement("td");
       var cellText2 = document.createTextNode(rowContent[j]);
       cell.appendChild(cellText2);
@@ -94,8 +134,4 @@ function displayResults () {
   };
   tableEl.appendChild(tableBody);
   document.getElementById("table").appendChild(tableEl);
-}
-
-function reload () {
-  window.location.reload();
 }
