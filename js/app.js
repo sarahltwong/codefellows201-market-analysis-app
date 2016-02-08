@@ -28,6 +28,7 @@ function shuffle (array) {
 }
 
 document.getElementById("submit").style.display = "none";
+document.getElementById("replay").style.display = "none";
 document.getElementById("mainBox").addEventListener("click",displayImage,false);
 
 function displayImage () {
@@ -37,18 +38,12 @@ function displayImage () {
       votes++;
     };
   };
-
-  if (votes === 10) {
-    document.getElementById("submit").style.display = "block";
-  };
-
   document.getElementById("voteTracker").innerHTML = "Votes submitted: " + votes + "<br>" + "Votes left: "+ (15 - votes);
-
   document.getElementById("mainBox").innerHTML = "";
   shuffle (images);
   for (var i = 0; i < 3; i++) {
     var sectionEl = document.createElement("section");
-
+  
     var headerEl = document.createElement("h2");
     var headerContent = document.createTextNode(images[i].imageName);
     headerEl.appendChild(headerContent);
@@ -62,11 +57,18 @@ function displayImage () {
 
     images[i].appearance++;
   }
+  if (votes === 15) {
+    document.getElementById("mainBox").innerHTML = "";
+    document.getElementById("submit").style.display = "block";
+    document.getElementById("replay").style.display = "block";
+  };
 };
 
 document.getElementById("showResults").addEventListener("click",displayResults,false);
+document.getElementById("playAgain").addEventListener("click",reload,false);
 
 function displayResults () {
+  document.getElementById("submit").style.display = "none";
   images.sort(function(a,b){return b.counter-a.counter});
   var tableEl = document.createElement("table");
   var tableBody = document.createElement("tbody");
@@ -92,4 +94,8 @@ function displayResults () {
   };
   tableEl.appendChild(tableBody);
   document.getElementById("table").appendChild(tableEl);
+}
+
+function reload () {
+  window.location.reload();
 }
