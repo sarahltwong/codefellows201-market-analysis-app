@@ -27,8 +27,7 @@ function shuffle (array) {
   return array;
 }
 
-document.getElementById("submit").style.display = "none";
-document.getElementById("replay").style.display = "none";
+document.getElementById("buttons").style.display = "none";
 document.getElementById("charts").style.display = "none";
 document.getElementById("mainBox").addEventListener("click",displayImage,false);
 
@@ -39,7 +38,7 @@ function displayImage () {
       votes++;
     };
   };
-  document.getElementById("voteTracker").innerHTML = "Votes submitted: " + votes + "<br>" + "Votes left: "+ (15 - votes);
+  document.getElementById("voteTracker").innerHTML = "Votes submitted: " + votes;
   document.getElementById("mainBox").innerHTML = "";
   shuffle (images);
   for (var i = 0; i < 3; i++) {
@@ -58,18 +57,30 @@ function displayImage () {
 
     images[i].appearance++;
   }
-  if (votes === 15) {
-    document.getElementById("mainBox").innerHTML = "";
-    document.getElementById("submit").style.display = "block";
-    document.getElementById("replay").style.display = "block";
+  if (votes % 15 === 0 && votes > 0) {
+    localStorage.setItem('storedVotes',JSON.stringify(votes));
+    localStorage.setItem('storedImages',JSON.stringify(images));
+    document.getElementById("guideText").innerHTML = "What would you like to do now?";
+    document.getElementById("voteTracker").style.display = "none";
+    document.getElementById("mainBox").style.display = "none";
+    document.getElementById("buttons").style.display = "block";
   };
 };
 
 document.getElementById("showResults").addEventListener("click",displayResults,false);
 document.getElementById("playAgain").addEventListener("click",reload,false);
+document.getElementById("keepPlaying").addEventListener("click",continuePlay,false);
 
 function reload () {
   window.location.reload();
+}
+
+function continuePlay () {
+  images = JSON.parse(localStorage.getItem('storedImages'));
+  votes = JSON.parse(localStorage.getItem('storedVotes'));
+  document.getElementById("voteTracker").style.display = "block";
+  document.getElementById("mainBox").style.display = "flex";
+  document.getElementById("buttons").style.display = "none";
 }
 
 var data = {
