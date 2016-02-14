@@ -8,24 +8,28 @@
   </head>
   <body onload = "displayImage()">
     <h1>Market Analysis</h1>
-    <p>
+    <p id = "guideText">
       Please click on the item that you are most likely to purchase.
     </p>
     <section id = "voteTracker"></section>
     <section class = "container" id = "mainBox"></section>
-    <section id = buttons>
+    <section id = "buttons">
       <section id = "showResults">
-        <button id = "submit">See Results</button>
+        <button id = "submit">See results</button>
       </section>
       <section id = "playAgain">
-        <button id = "replay">Play Again</button>
+        <button id = "replay">Start a new round</button>
+      </section>
+      <section id = "keepPlaying">
+        <button id = "keepPlay">Keep playing</button>
       </section>
     </section>
     <section id = "charts">
       <canvas id="chartOne" width = "800px" height = "300px"></canvas>
     </section>
     <section id = "table"></section>
-    <script src = "js/chart.js"></script>
+    <script src = "js/chart1.js"></script>
+    <script src = "js/chart2.js"></script>
     <script src = "js/app.js"></script>
   </body>
 </html>

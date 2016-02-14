@@ -73,7 +73,7 @@ button {
   border: none;
 }
 
-#playAgain, #showResults {
+#playAgain, #showResults, #keepPlaying {
   padding: 0;
 }
 
